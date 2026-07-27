@@ -29,6 +29,21 @@ export type {
 } from '../core/components/retry-policy';
 export type { PubNubConfiguration };
 
+// These mirror the static members exposed on the `PubNub` class so they can be imported either as
+// `import PubNub from 'pubnub'` (and accessed via `PubNub.LogLevel`) or directly as named imports
+// (e.g. `import { LogLevel } from 'pubnub'`).
+
+export { default as CATEGORIES } from '../core/constants/categories';
+export { default as OPERATIONS } from '../core/constants/operations';
+export { LogLevel } from '../core/interfaces/logger';
+
+// Retry policy constructors and utility helpers (value-only static members).
+export const ExponentialRetryPolicy = PubNubCore.ExponentialRetryPolicy;
+export const LinearRetryPolicy = PubNubCore.LinearRetryPolicy;
+export const NoneRetryPolicy = PubNubCore.NoneRetryPolicy;
+export const generateUUID = PubNubCore.generateUUID;
+export const notificationPayload = PubNubCore.notificationPayload;
+
 // Polyfill global Buffer for React Native environment
 global.Buffer = global.Buffer || Buffer;
 
